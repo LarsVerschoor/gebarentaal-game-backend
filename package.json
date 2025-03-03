@@ -1,0 +1,31 @@
+{
+  "name": "gebarentaal-game-backend",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/LarsVerschoor/gebarentaal-game-backend#readme",
+  "bugs": {
+    "url": "https://github.com/LarsVerschoor/gebarentaal-game-backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LarsVerschoor/gebarentaal-game-backend.git"
+  },
+  "license": "MIT",
+  "author": "Team 14",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --env-file=.env index.js",
+    "dev": "node --env-file=.env --watch index.js",
+    "migrate:up": "npx sequelize-cli db:migrate",
+    "migrate:undo": "npx sequelize-cli db:migrate:undo"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "mysql2": "^3.12.0",
+    "sequelize": "^6.37.5"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.6.2"
+  }
+}
