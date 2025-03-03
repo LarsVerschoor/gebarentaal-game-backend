@@ -1,5 +1,6 @@
 const express = require('express')
-const testRouter = require('./routes/v1/testRouter.js')
+const v1TestRouter = require('./routes/v1/testRouter.js')
+const v2TestRouter = require('./routes/v2/testRouter.js')
 
 const app = express();
 
@@ -21,7 +22,9 @@ app.use((req, res, next) => {
     next()
 })
 
-app.use('/api', testRouter)
+// Hier zouden dus meerdere versies van de API geregistreerd kunnen worden
+app.use('/api/v1/', v1TestRouter);
+app.use('/api/v2/', v2TestRouter);
 
 const port = process.env.EXPRESS_PORT || 8000;
 app.listen(port , () => {
