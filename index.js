@@ -23,6 +23,7 @@ app.use((req, res, next) => {
 
 app.use('/api', testRouter)
 
-app.listen(process.env.EXPRESS_PORT, () => {
-    console.log(`Server is listening on port ${process.env.EXPRESS_PORT}`);
+const port = process.env.EXPRESS_PORT || 8000;
+app.listen(port , () => {
+    console.log(`Server is listening on port ${port}`);
 });
