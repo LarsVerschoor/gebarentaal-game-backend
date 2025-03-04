@@ -36,3 +36,18 @@ Create a new table
 ```bash
 npx sequelize-cli model:generate --name Table --attributes name:string,age:smallint
 ```
+
+Migrate up
+```bash
+npm run migrate:up
+```
+
+Migrate undo
+```bash
+npm run migrate:undo
+```
+
+Migrate fresh
+```bash
+npm run migrate:fresh
+```
