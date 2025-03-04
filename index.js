@@ -1,4 +1,5 @@
 const express = require('express')
+// Import hier alle routers voor alle versies
 const v1TestRouter = require('./routes/v1/testRouter.js')
 const v2TestRouter = require('./routes/v2/testRouter.js')
 
