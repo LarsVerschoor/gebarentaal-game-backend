@@ -3,6 +3,8 @@ const express = require('express')
 const v1TestRouter = require('./routes/v1/testRouter.js')
 const v2TestRouter = require('./routes/v2/testRouter.js')
 
+const {Lesson, Word} = require('./database/models');
+
 const app = express();
 
 app.use(express.json());
@@ -31,3 +33,11 @@ const port = process.env.EXPRESS_PORT || 8000;
 app.listen(port , () => {
     console.log(`Server is listening on port ${port}`);
 });
+
+// const test = async() => {
+//     const newLesson = await Lesson.create({number: 1, video_path: 'hallo'});
+//     const newWord = await  Word.create({name: 'name', video_path: 'path-hallo'});
+//     await newLesson.addWord(newWord);
+// }
+//
+// test();

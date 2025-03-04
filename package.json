@@ -18,7 +18,8 @@
     "start": "node --env-file=.env index.js",
     "dev": "node --env-file=.env --watch index.js",
     "migrate:up": "npx sequelize-cli db:migrate",
-    "migrate:undo": "npx sequelize-cli db:migrate:undo"
+    "migrate:undo": "npx sequelize-cli db:migrate:undo",
+    "migrate:fresh": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
