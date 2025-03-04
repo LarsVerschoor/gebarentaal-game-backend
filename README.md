@@ -30,3 +30,9 @@ DIALECT_DEVELOPMENT=mysql
 ```bash
 npm run migrate:up
 ```
+
+## Database migrations:
+Create a new table
+```bash
+npx sequelize-cli model:generate --name Table --attributes name:string,age:smallint
+```
