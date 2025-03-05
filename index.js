@@ -1,9 +1,7 @@
 import express from 'express';
-// import versions
 import gameRouter from './routes/v1/gameRouter';
-
-const {Word} = require('./database/models');
-
+const express = require('express')
+const {Lesson, Word} = require('./database/models');
 const app = express();
 
 app.use(express.json());
@@ -24,6 +22,7 @@ app.use((req, res, next) => {
     next()
 })
 
+// Hier zouden dus meerdere versies van de API geregistreerd kunnen worden
 app.use('/api/v1/', gameRouter);
 
 const port = process.env.EXPRESS_PORT || 8000;
