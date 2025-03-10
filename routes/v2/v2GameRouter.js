@@ -1,28 +1,28 @@
 import { Router } from "express";
 
-const v1GameRouter = new Router();
+const v2GameRouter = new Router();
 
-v1GameRouter.get('/words/:id', async (req, res) =>{
+v2GameRouter.get('/words/:id', async (req, res) =>{
     const id = req.params.id;
     // const word = await
 })
 
 // OPTIONS voor root
-// v1GameRouter.options('/', async (req, res) => {
+// v2GameRouter.options('/', async (req, res) => {
 //     res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
 //     res.setHeader("Allow", "GET, POST, OPTIONS");
 //     res.status(204).send();
 // });
 //
 // // OPTIONS voor specifieke ID
-// v1GameRouter.options('/:id', async (req, res) => {
+// v2GameRouter.options('/:id', async (req, res) => {
 //     res.setHeader("Access-Control-Allow-Methods", "GET, DELETE, PUT, OPTIONS");
 //     res.setHeader("Allow", "GET, DELETE, PUT, OPTIONS");
 //     res.status(204).send();
 // });
 //
 // // GET alle games
-// v1GameRouter.get('/', async (req, res) => {
+// v2GameRouter.get('/', async (req, res) => {
 //     try {
 //         const games = await Game.find({});
 //         res.status(200).json({
@@ -42,7 +42,7 @@ v1GameRouter.get('/words/:id', async (req, res) =>{
 // });
 //
 // // GET game op ID
-// v1GameRouter.get('/:id', async (req, res) => {
+// v2GameRouter.get('/:id', async (req, res) => {
 //     const id = req.params.id;
 //     try {
 //         const game = await Game.findById(id);
@@ -62,7 +62,7 @@ v1GameRouter.get('/words/:id', async (req, res) =>{
 // });
 //
 // // DELETE game op ID
-// v1GameRouter.delete('/:id', async (req, res) => {
+// v2GameRouter.delete('/:id', async (req, res) => {
 //     const id = req.params.id;
 //     try {
 //         const game = await Game.findById(id);
@@ -77,7 +77,7 @@ v1GameRouter.get('/words/:id', async (req, res) =>{
 // });
 //
 // // PUT (update) game op ID
-// v1GameRouter.put('/:id', async (req, res) => {
+// v2GameRouter.put('/:id', async (req, res) => {
 //     const id = req.params.id;
 //     try {
 //         const updatedGame = await Game.findByIdAndUpdate(
@@ -105,7 +105,7 @@ v1GameRouter.get('/words/:id', async (req, res) =>{
 // });
 //
 // // POST nieuwe game
-// v1GameRouter.post('/', async (req, res) => {
+// v2GameRouter.post('/', async (req, res) => {
 //     const { title, description, developer } = req.body;
 //     try {
 //         const game = new Game({ title, description, developer });
@@ -128,7 +128,7 @@ v1GameRouter.get('/words/:id', async (req, res) =>{
 //
 //
 // // DELETE alle games
-// v1GameRouter.delete('/seed', async (req, res) => {
+// v2GameRouter.delete('/seed', async (req, res) => {
 //     try {
 //         await Game.deleteMany({});
 //         res.status(200).json({ message: "All games have been deleted successfully" });
@@ -141,4 +141,4 @@ v1GameRouter.get('/words/:id', async (req, res) =>{
 
 
 
-export default v1GameRouter;
+export default v2GameRouter;
