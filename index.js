@@ -4,18 +4,13 @@ const app = express();
 const v1GameRouter = require('./routes/v1/v1GameRouter')
 const v2GameRouter = require('./routes/v1/v1GameRouter')
 
+const requireAcceptHeader = require('./middlewares/require-accept-header');
+
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 
-app.use((req, res, next) => {
-    const acceptHeader = req.headers['accept'];
-    if (acceptHeader && acceptHeader.includes('application/json') || req.method === 'OPTIONS') {
-        next();
-    } else {
-        res.status(406).json('Illegal accept header')
-    }
-})
+app.use(requireAcceptHeader);
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
