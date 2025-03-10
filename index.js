@@ -2,6 +2,8 @@ const express = require('express')
 // const {Lesson, Word} = require('./database/models');
 const app = express();
 const v1GameRouter = require('./routes/v1/v1GameRouter')
+const v2GameRouter = require('./routes/v1/v1GameRouter')
+
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
@@ -33,6 +35,7 @@ app.use((req, res, next) => {
 
 // Hier zouden dus meerdere versies van de API geregistreerd kunnen worden
 app.use('/api/v1/', v1GameRouter);
+app.use('/api/v2/', v2GameRouter);
 
 const port = process.env.EXPRESS_PORT || 8000;
 app.listen(port , () => {

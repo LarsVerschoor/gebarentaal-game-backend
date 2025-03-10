@@ -141,4 +141,4 @@ v1GameRouter.get('/words/:id', async (req, res) =>{
 
 
 
-export default v1GameRouter;
+module.exports = v1GameRouter

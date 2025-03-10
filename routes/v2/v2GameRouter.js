@@ -140,5 +140,4 @@ v2GameRouter.get('/words/:id', async (req, res) =>{
 
 
 
-
-export default v2GameRouter;
+module.exports = v2GameRouter
