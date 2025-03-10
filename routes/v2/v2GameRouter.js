@@ -1,6 +1,5 @@
-import { Router } from "express";
-
-const v2GameRouter = new Router();
+const express = require('express');
+const v2GameRouter = express.Router();
 
 v2GameRouter.get('/words/:id', async (req, res) =>{
     const id = req.params.id;
