@@ -1,11 +1,14 @@
-import { Router } from "express";
+const express = require('express');
+const v1GameRouter = express.Router();
 
-const v1GameRouter = new Router();
+const characterController = require('../../controllers/character-controller');
 
 v1GameRouter.get('/words/:id', async (req, res) =>{
     const id = req.params.id;
     // const word = await
 })
+
+v1GameRouter.get('/characters', characterController.getAll);
 
 // OPTIONS voor root
 // v1GameRouter.options('/', async (req, res) => {

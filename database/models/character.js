@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       models.Character.belongsToMany(models.Level, {through: 'character_level'});
-      models.Character.belongsToMany(Models.User, {through: 'character_user'});
+      models.Character.belongsToMany(models.User, {through: 'character_user'});
     }
   }
   Character.init({
