@@ -12,14 +12,10 @@ gameRouter.get('/logout', async (req, res) =>{
 })
 
 gameRouter.options('/characters', async (req, res) =>{
-    const id = req.params.id;
-    const character = await Character.findById(id);
     // const word = await
 })
 
 gameRouter.get('/characters', async (req, res) =>{
-    const id = req.params.id;
-    const character = await Character.findById(id);
     // const word = await
 })
 
