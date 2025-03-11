@@ -64,3 +64,10 @@ Migrate fresh
 ```bash
 npm run migrate:fresh
 ```
+
+## Endpoints
+
+| HTTP method | endpoint    | V1 | V2 |       required headers        |   content-type   |      accept      | GET parameters |        body        |           response            |
+|:-----------:|:------------|:--:|:--:|:-----------------------------:|:----------------:|:----------------:|:--------------:|:------------------:|:-----------------------------:|
+|    POST     | login/      | x  |    |                               | application/json | application/json |                | name, token, email |             token             |
+|     GET     | characters/ | x  |    | Authorization: Bearer <token> |                  | application/json | type=<numeric  |    alphabetic>     | is_numeric, value, image_path | 
