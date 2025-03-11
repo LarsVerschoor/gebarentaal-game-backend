@@ -19,11 +19,13 @@
     "dev": "node --watch index.js",
     "migrate:up": "npx sequelize-cli db:migrate",
     "migrate:undo": "npx sequelize-cli db:migrate:undo",
-    "migrate:fresh": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate"
+    "migrate:fresh": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate",
+    "key:generate": "node generate-jwt-keys.js"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.12.0",
     "sequelize": "^6.37.6"
   },

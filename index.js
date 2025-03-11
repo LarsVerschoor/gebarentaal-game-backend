@@ -25,7 +25,6 @@ app.use((req, res, next) => {
     } else {
         res.status(406).send('Illegal format, only use json');
     }
-
 })
 
 // Hier zouden dus meerdere versies van de API geregistreerd kunnen worden

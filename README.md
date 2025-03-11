@@ -31,6 +31,19 @@ DIALECT_DEVELOPMENT=mysql
 npm run migrate:up
 ```
 
+6. Generate JSON Web Token key pairs
+```bash
+npm run key:generate
+```
+
+7. Run project with dev for development or start for production
+```bash
+npm run dev
+```
+```bash
+npm run start
+```
+
 ## Database migrations:
 Create a new table
 ```bash
