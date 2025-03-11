@@ -2,7 +2,22 @@ const {Character} = require('../database/models');
 
 const characterController = {
     getAll: (req, res) => {
-        res.json(Character.findAll());
+        const typeReceived = req.query.type;
+        if (typeReceived === 'numeric'){
+            res.json(Character.findAll({
+                where: {
+                    type: 'numeric'
+                }
+            }))
+        } else if (typeReceived === 'character') {
+            res.json(Character.findAll({
+                where: {
+                    type: 'character'
+                }
+            }))
+        } else {
+            res.json(Character.findAll());
+        }
     },
 
 
