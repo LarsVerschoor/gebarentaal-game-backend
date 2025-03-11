@@ -6,6 +6,10 @@ const userController = require('../../controllers/user-controller')
 
 
 v1GameRouter.get('/characters', characterController.getAll);
+v1GameRouter.get('/characters', characterController.addChar);
+v1GameRouter.get('/characters', characterController.options);
+v1GameRouter.get('/characters/:id', characterController.getById);
+
 v1GameRouter.get('/levels', levelController.getAll);
 v1GameRouter.get('/users', userController.getAll);
 
