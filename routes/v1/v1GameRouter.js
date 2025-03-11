@@ -31,7 +31,6 @@ v1GameRouter.options('/', async (req, res) => {
 v1GameRouter.post('/login', jwtAuthentication);
 
 v1GameRouter.get('/testjwt', authenticate, (req, res) => {
-    console.log(req.user);
     res.status(200).send(req.user.name);
 });
 
