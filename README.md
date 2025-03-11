@@ -65,9 +65,9 @@ Migrate fresh
 npm run migrate:fresh
 ```
 
-## Endpoints
+## Endpoints V1
 
-| HTTP method | endpoint    | V1 | V2 |       required headers        |   content-type   |      accept      |        GET parameters        |        body        |           response            |
-|:-----------:|:------------|:--:|:--:|:-----------------------------:|:----------------:|:----------------:|:----------------------------:|:------------------:|:-----------------------------:|
-|    POST     | login/      | x  |    |                               | application/json | application/json |                              | name, token, email |             token             |
-|     GET     | characters/ | x  |    | Authorization: Bearer <token> |                  | application/json | type=<numeric OR alphabetic> |                    | is_numeric, value, image_path | 
+| HTTP method | endpoint    |       required headers        |   content-type   |      accept      |        GET parameters        |        body        |           response            |
+|:-----------:|:------------|:-----------------------------:|:----------------:|:----------------:|:----------------------------:|:------------------:|:-----------------------------:|
+|    POST     | login/      |                               | application/json | application/json |                              | name, token, email |             token             |
+|     GET     | characters/ | Authorization: Bearer <token> |                  | application/json | type=<numeric OR alphabetic> |                    | is_numeric, value, image_path | 
