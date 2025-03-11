@@ -70,4 +70,4 @@ npm run migrate:fresh
 | HTTP method | endpoint    |       required headers        |   content-type   |      accept      |        GET parameters        |        body        |           response            |
 |:-----------:|:------------|:-----------------------------:|:----------------:|:----------------:|:----------------------------:|:------------------:|:-----------------------------:|
 |    POST     | login/      |                               | application/json | application/json |                              | name, token, email |             token             |
-|     GET     | characters/ | Authorization: Bearer <token> |                  | application/json | type=<numeric OR alphabetic> |                    | is_numeric, value, image_path | 
+|     GET     | characters/ | Authorization: Bearer <token> |                  | application/json | type={numeric or alphabetic} |                    | is_numeric, value, image_path | 
