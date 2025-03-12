@@ -20,27 +20,6 @@ const characterController = {
         }
     },
 
-
-
-    get: async (req, res) => {
-        const id = req.params.id;
-        try {
-            const character = await Character.findByPk(id);
-            if (!character) {
-                return res.status(404).json({ message: "character not found" });
-            }
-            res.status(200).json({
-                ...character.toJSON(),
-                _links: {
-                    self: { href: `${process.env.SERVER_URL}/character/${id}` },
-                    collection: { href: `${process.env.SERVER_URL}/character` },
-                },
-            });
-        } catch (error) {
-            res.status(500).json({ message: "Error fetching character", error: error.message });
-        }
-    },
-
     post: async (req, res) =>    {
         const { is_numeric, value, image_path, video_path, modelName, timestamps, createdAt, updatedAt, tableName} = req.body;
         try {
@@ -61,19 +40,66 @@ const characterController = {
         }
     },
 
+    get: async (req, res) => {
+        const id = req.params.id;
+        try {
+            const character = await Character.findByPk(id);
+            if (!character) {
+                return res.status(404).json({ message: "character not found" });
+            }
+            res.status(200).json({
+                ...character.toJSON(),
+                _links: {
+                    self: { href: `${process.env.SERVER_URL}/character/${id}` },
+                    collection: { href: `${process.env.SERVER_URL}/character` },
+                },
+            });
+        } catch (error) {
+            res.status(500).json({ message: "Error fetching character", error: error.message });
+        }
+    },
 
+    delete: async (req, res) => {
+        const id = req.params.id;
+        try {
+            const character = await Character.findByPk(id);
+            if (!character) {
+                return res.status(404).json({ message: "character not found" });
+            }
+            await character.deleteOne();
+            res.status(204).send(); // Geen content bij succesvolle DELETE
+        } catch (error) {
+            res.status(500).json({ message: "Error deleting character", error: error.message });
+        }
+    },
 
+    put: async (req, res) => {
+        const id = req.params.id;
+        try {
+            // Zoek eerst het character
+            const character = await Character.findByPk(id);
+            if (!character) {
+                return res.status(404).json({ message: "character not found" });
+            }
 
+            // Update het character
+            await character.update({
+                title: req.body.title,
+                description: req.body.description,
+                director: req.body.director,
+            });
 
-
-
-
-
-
-
-
-
-
+            res.status(200).json({
+                ...character.toJSON(),
+                _links: {
+                    self: { href: `${process.env.SERVER_URL}/api/v1/characters/${character.id}` },
+                    collection: { href: `${process.env.SERVER_URL}/api/v1/characters` },
+                },
+            });
+        } catch (error) {
+            res.status(400).json({ message: "Error updating character", error: error.message });
+        }
+    }
 
 }
 

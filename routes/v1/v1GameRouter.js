@@ -10,9 +10,14 @@ const authenticate = require(path.join(__dirname, '../', '../', 'middlewares/aut
 
 
 v1GameRouter.get('/characters', characterController.getAll);
-v1GameRouter.get('/characters/:id', characterController.get);
-
 v1GameRouter.post('/characters', characterController.post);
+
+v1GameRouter.get('/characters/:id', characterController.get);
+v1GameRouter.get('/characters/:id', characterController.delete);
+v1GameRouter.get('/characters/:id', characterController.put);
+
+
+
 
 v1GameRouter.get('/levels', levelController.getAll);
 v1GameRouter.get('/levels/:id', levelController.getAll);
