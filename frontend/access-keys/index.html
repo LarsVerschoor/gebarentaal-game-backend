@@ -28,7 +28,7 @@
         formElement.addEventListener('submit', async (e) => {
             e.preventDefault();
             const password = document.getElementById('password').value;
-            const URI = 'http://localhost:8000/keys/register';
+            const URI = 'http://145.24.222.137:8000/keys/register';
             const response = await fetch(URI, {
                 method: 'post',
                 headers: {
