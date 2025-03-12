@@ -20,11 +20,19 @@ const userController = {
                 users = await User.findAll();
             }
 
-            res.json(users);
+            // Voeg een self-link toe aan elk user-object
+            const usersWithLinks = users.map(user => ({
+                ...user.toJSON(),
+                self: { href: `${process.env.SERVER_URL}/api/v1/users/${user.id}` },
+                collection: { href: `${process.env.SERVER_URL}/api/v1/users` },
+            }));
+
+            res.json(usersWithLinks);
         } catch (error) {
             res.status(500).json({ message: "Error fetching users", error: error.message });
         }
     },
+
 
     post: async (req, res) => {
         const { role, name, student_number, modelName, timestamps, createdAt, updatedAt, tableName } = req.body;

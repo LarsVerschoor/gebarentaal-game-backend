@@ -14,7 +14,14 @@ const characterController = {
                 characters = await Character.findAll();
             }
 
-            res.json(characters);
+            const charactersWithLinks = characters.map(character => ({
+                ...character.toJSON(),
+                self: { href: `${process.env.SERVER_URL}/api/v1/characters/${character.id}` },
+                collection: { href: `${process.env.SERVER_URL}/api/v1/characters` },
+            }));
+
+            res.json(charactersWithLinks);
+
         } catch (error) {
             res.status(500).json({ message: "Error fetching characters", error: error.message });
         }

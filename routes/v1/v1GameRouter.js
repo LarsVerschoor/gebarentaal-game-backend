@@ -19,10 +19,6 @@ v1GameRouter.delete('/characters/:id', characterController.delete);
 v1GameRouter.put('/characters/:id', characterController.put);
 
 
-v1GameRouter.get('/models', modelController.getAll);
-v1GameRouter.get('/models/:id', modelController.get);
-
-
 v1GameRouter.get('/levels', levelController.getAll);
 v1GameRouter.post('/levels', levelController.post);
 v1GameRouter.options('/levels', levelController.options);
@@ -42,7 +38,12 @@ v1GameRouter.put('/users/:id', userController.put);
 
 
 
-v1GameRouter.post('/scores', score.getAll);
+
+v1GameRouter.get('/models', modelController.getAll);
+v1GameRouter.get('/models/:id', modelController.get);
+
+
+//v1GameRouter.post('/scores', score.getAll);
 
 
 

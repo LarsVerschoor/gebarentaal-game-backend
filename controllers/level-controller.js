@@ -19,8 +19,14 @@ const levelController = {
             } else {
                 levels = await Level.findAll();
             }
+            const levelsWithLinks = levels.map(level => ({
+                ...level.toJSON(),
+                self: { href: `${process.env.SERVER_URL}/api/v1/levels/${level.id}` },
+                collection: { href: `${process.env.SERVER_URL}/api/v1/levels` },
+            }));
 
-            res.json(levels);
+            res.json(levelsWithLinks);
+
         } catch (error) {
             res.status(500).json({ message: "Error fetching levels", error: error.message });
         }
