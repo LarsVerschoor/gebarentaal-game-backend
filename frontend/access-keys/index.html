@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Request an access key</title>
+</head>
+<body>
+    <h1>Request an access key</h1>
+    <form action="" method="post" id="form">
+        <div>
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password">
+            <input type="submit" value="Submit request">
+            <div id="result"></div>
+        </div>
+    </form>
+
+    <script>
+        const resultElement = document.getElementById('result');
+        const showResult = (message) => {
+            resultElement.innerText = message;
+        }
+
+        const formElement = document.getElementById('form');
+        formElement.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const password = document.getElementById('password').value;
+            const URI = 'http://localhost:8000/keys/register';
+            const response = await fetch(URI, {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ password })
+            });
+            if (response.status === 200) {
+                showResult(`Your key is ${(await response.json()).key}\nUse this key in the x-access-key header.\nDo not share this key.`);
+            } else {
+                showResult(`Rejected: ${(await response.json()).error}`);
+            }
+        });
+    </script>
+</body>
+</html>
