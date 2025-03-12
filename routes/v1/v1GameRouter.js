@@ -5,11 +5,21 @@ const characterController = require('../../controllers/character-controller');
 const levelController = require('../../controllers/level-controller');
 const userController = require('../../controllers/user-controller');
 const jwtAuthentication = require(path.join(__dirname, '../', '../', 'controllers/jwt-authentication'));
+const modelController = require('../../controllers/model-controller');
 
 const authenticate = require(path.join(__dirname, '../', '../', 'middlewares/authenticate'));
 
 
 v1GameRouter.get('/characters', characterController.getAll);
+v1GameRouter.get('/characters/:id', characterController.get);
+v1GameRouter.post('/characters', characterController.post);
+
+v1GameRouter.get('/models', modelController.getAll);
+v1GameRouter.get('/models/:id', modelController.get);
+
+//v1GameRouter.options('/characters', characterController.options);
+
+
 v1GameRouter.post('/characters', characterController.post);
 
 v1GameRouter.get('/characters/:id', characterController.get);
