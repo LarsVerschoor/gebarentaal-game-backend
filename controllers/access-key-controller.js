@@ -2,6 +2,7 @@ const { AccessKey } = require('../database/models');
 const path = require('path');
 const crypto = require('crypto');
 const correctPassword = process.env['REQUEST_KEY_PASSWORD'];
+if (!correctPassword) console.warn('Please provide the REQUEST_KEY_PASSWORD in .env');
 
 const accessKeyController = {
     registerPage: (req, res) => {
