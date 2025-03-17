@@ -1,19 +1,21 @@
 const express = require('express')
-// const {Lesson, Word} = require('./database/models');
 const app = express();
-const v1GameRouter = require('./routes/v1/v1GameRouter');
-const v2GameRouter = require('./routes/v1/v1GameRouter');
 const accessKeyRouter = require('./routes/access-key-router');
 
 const requireAcceptHeader = require('./middlewares/require-accept-header');
 const requireAccessKey = require('./middlewares/require-access-key');
+
+const routers = {
+    v1: require('./routes/v1/v1GameRouter'),
+    v2: require('./routes/v2/v2GameRouter'),
+}
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, x-access-key, Content-Type, Accept');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, x-access-key, Content-Type, Accept', 'Authorization');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
 
     if (req.method === 'OPTIONS') {
