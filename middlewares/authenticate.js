@@ -2,12 +2,12 @@ const path = require("path");
 const { User } = require(path.join(__dirname, '../', 'database/models'));
 
 const authenticate = async (req, res, next) => {
-    try {
-        if (!req.userId) {
-            console.warn('Ensure the check-logged-in middleware is called before the authenticate middleware!');
-            return res.status(500).json({error: 'Internal Server Error'});
-        }
+    if (!req.userId) {
+        console.warn('Ensure the check-logged-in middleware is called before the authenticate middleware!');
+        return res.status(500).json({error: 'Internal Server Error'});
+    }
 
+    try {
         const user = await User.findByPk(req.userId);
         if (!user) {
             console.warn(`User with id ${req.userId} could not be found while authenticating`);
