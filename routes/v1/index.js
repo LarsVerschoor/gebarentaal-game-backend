@@ -6,6 +6,7 @@ const levelController = require('../../controllers/level-controller');
 const userController = require('../../controllers/user-controller');
 const jwtAuthentication = require(path.join(__dirname, '../', '../', 'controllers/jwt-authentication'));
 const modelController = require('../../controllers/model-controller');
+const scoreController = require('../../controllers/score-controller');
 
 const checkLoggedIn = require(path.join(__dirname, '../', '../', 'middlewares/check-logged-in'));
 const authenticate = require(path.join(__dirname, '../', '../', 'middlewares/authenticate'));
@@ -36,16 +37,11 @@ router.get('/users/:id', userController.get);
 router.delete('/users/:id', userController.delete);
 router.put('/users/:id', userController.put);
 
-
-
+router.post('/scores', checkLoggedIn, authenticate, scoreController.post);
+router.get('/scores', checkLoggedIn, authenticate, scoreController.get);
 
 router.get('/models', modelController.getAll);
 router.get('/models/:id', modelController.get);
-
-
-//v1GameRouter.post('/scores', score.getAll);
-
-
 
 router.options('/', async (req, res) => {
     res.setHeader("Access-Control-Allow-Methods" , "OPTIONS")

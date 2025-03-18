@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      models.Level.belongsToMany(models.User, {through: 'level_user'});
-      models.Level.belongsToMany(models.Character, {through: 'character_level'});
+      models.Level.belongsToMany(models.User, {through: 'level_user', foreignKey: 'level_id'});
+      models.Level.belongsToMany(models.Character, {through: 'character_level', foreignKey: 'level_id'});
     }
   }
   Level.init({
