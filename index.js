@@ -1,11 +1,13 @@
 const express = require('express')
 const accessKeyRouter = require('./routes/access-key-router');
+const path = require('path');
 const requireAcceptHeader = require('./middlewares/require-accept-header');
 const requireAccessKey = require('./middlewares/require-access-key');
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 const routers = {
     v1: require('./routes/v1'),
@@ -27,7 +29,7 @@ app.use((req, res, next) => {
 app.use('/keys', accessKeyRouter);
 
 app.use(requireAcceptHeader);
-app.use(requireAccessKey);
+// app.use(requireAccessKey);
 
 // Hier zouden dus meerdere versies van de API geregistreerd kunnen worden
 Object.keys(routers).forEach((version, index) => {

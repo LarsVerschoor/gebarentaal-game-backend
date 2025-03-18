@@ -7,7 +7,7 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
     for (const letter of alphabet) {
-      await queryInterface.bulkUpdate('characters', { image_path: letter }, { value: letter });
+      await queryInterface.bulkUpdate('characters', { image_path: letter + '.png' }, { value: letter});
     }
   },
 
@@ -16,6 +16,5 @@ module.exports = {
     for (const letter of alphabet) {
       await queryInterface.bulkUpdate('characters', { image_path: letter }, { value: ''});
     }
-    
   }
 };
