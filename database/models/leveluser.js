@@ -26,7 +26,9 @@ module.exports = (sequelize, DataTypes) => {
         sequelize,
         modelName: 'LevelUser',
         tableName: 'level_user',
-        timestamps: false
+        timestamps: true,
+        createdAt: 'created_at',
+        updatedAt: 'updated_at'
     });
 
     return LevelUser;
