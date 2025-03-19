@@ -90,6 +90,6 @@ npm run migrate:fresh
 Load test on /api/v2/characters
 Performs 2 DB queries: on the users table and one the characters table.
 
-On ubuntu server with 2GB RAM on an Intel(R) Xeon(R) Silver 4314 CPU @ 2.40GHz Processor
-100 Requests per second ~10ms median response time with 100% 200 OK status codes
+On ubuntu server with 2GB RAM on an Intel(R) Xeon(R) Silver 4314 CPU @ 2.40GHz Processor<br>
+100 Requests per second ~10ms median response time with 100% 200 OK status codes<br>k
 500 Requests per second ~1200ms median response time with 97.6% 200 OK status codes
