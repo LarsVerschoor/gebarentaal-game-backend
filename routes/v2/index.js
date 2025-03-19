@@ -7,11 +7,11 @@ const accountController = require('../../controllers/v2/account-controller');
 const checkLoggedIn = require(path.join(__dirname, '../', '../', 'middlewares/check-logged-in'));
 const authenticate = require(path.join(__dirname, '../', '../', 'middlewares/authenticate'));
 
-router.get('/characters', characterController.getAll);
+router.get('/characters', checkLoggedIn, authenticate, characterController.getAll);
 
-router.get('/accounts', accountController.getAll);
-router.post('/accounts', accountController.post);
-router.delete('/accounts', accountController.delete);
+router.get('/accounts', checkLoggedIn, authenticate, accountController.getAll);
+router.post('/accounts', checkLoggedIn, authenticate, accountController.post);
+router.delete('/accounts', checkLoggedIn, authenticate, accountController.delete);
 
 
 module.exports = router

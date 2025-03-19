@@ -11,13 +11,13 @@ const scoreController = require('../../controllers/score-controller');
 const checkLoggedIn = require(path.join(__dirname, '../', '../', 'middlewares/check-logged-in'));
 const authenticate = require(path.join(__dirname, '../', '../', 'middlewares/authenticate'));
 
-router.get('/characters', characterController.getAll);
-router.post('/characters', characterController.post);
-router.options('/characters', characterController.options);
+router.get('/characters', checkLoggedIn, authenticate, characterController.getAll);
+router.post('/characters', checkLoggedIn, authenticate, characterController.post);
+router.options('/characters', checkLoggedIn, authenticate, characterController.options);
 
-router.get('/characters/:id', characterController.get);
-router.delete('/characters/:id', characterController.delete);
-router.put('/characters/:id', characterController.put);
+router.get('/characters/:id', checkLoggedIn, authenticate, characterController.get);
+router.delete('/characters/:id', checkLoggedIn, authenticate, characterController.delete);
+router.put('/characters/:id', checkLoggedIn, authenticate, characterController.put);
 
 
 router.get('/levels', levelController.getAll);
@@ -28,20 +28,11 @@ router.get('/levels/:id', levelController.get);
 router.delete('/levels/:id', levelController.delete);
 router.put('/levels/:id', levelController.put);
 
-
-router.get('/users', userController.getAll);
-router.post('/users', userController.post);
-router.options('/users', userController.options);
-
-router.get('/users/:id', userController.get);
-router.delete('/users/:id', userController.delete);
-router.put('/users/:id', userController.put);
-
 router.post('/scores', checkLoggedIn, authenticate, scoreController.post);
 router.get('/scores', checkLoggedIn, authenticate, scoreController.get);
 
-router.get('/models', modelController.getAll);
-router.get('/models/:id', modelController.get);
+router.get('/models', checkLoggedIn, authenticate, modelController.getAll);
+router.get('/models/:id', checkLoggedIn, authenticate, modelController.get);
 
 router.options('/', async (req, res) => {
     res.setHeader("Access-Control-Allow-Methods" , "OPTIONS")
