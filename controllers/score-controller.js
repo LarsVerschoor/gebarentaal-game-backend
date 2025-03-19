@@ -41,7 +41,7 @@ const updateOrInsertTime = (user_id, level_id, time) => {
                where: { user_id, level_id }
            });
            if (!levelUser) {
-               await LevelUser.create({ user_id, level_id, time: time });
+               await LevelUser.create({ user_id, level_id, best_time: time });
                return resolve();
            }
            await levelUser.update({ best_time: levelUser.best_time < time ? levelUser.best_time : time });
