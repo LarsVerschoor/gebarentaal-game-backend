@@ -1,4 +1,4 @@
-const {Level, User, Character, LevelUser, CharacterUser} = require('../database/models');
+const {Level, User, LevelUser} = require('../database/models');
 
 const scoreController = {
     post: async (req, res) => {
@@ -9,7 +9,7 @@ const scoreController = {
         }
 
         try {
-            await updateOrInsertTime(req.user.id, level, time);
+            await insertTime(req.user.id, level, time);
             res.status(201).json({success: 'success'});
         } catch(error) {
             console.error(error);
@@ -22,7 +22,7 @@ const scoreController = {
                 include: {
                     model: User,
                     where: { id: req.user.id },
-                    through: { attributes: ['best_time'] }
+                    through: { attributes: ['best_time', 'created_at', 'updated_at'] }
                 }
             });
             res.status(200).json(JSON.stringify(levels));
@@ -34,17 +34,10 @@ const scoreController = {
     }
 }
 
-const updateOrInsertTime = (user_id, level_id, time) => {
+const insertTime = (user_id, level_id, time) => {
     return new Promise(async (resolve, reject) => {
        try {
-           const levelUser = await LevelUser.findOne({
-               where: { user_id, level_id }
-           });
-           if (!levelUser) {
-               await LevelUser.create({ user_id, level_id, best_time: time });
-               return resolve();
-           }
-           await levelUser.update({ best_time: levelUser.best_time < time ? levelUser.best_time : time });
+           await LevelUser.create({ user_id, level_id, best_time: time });
            return resolve();
        } catch(error) {
            reject(error);
