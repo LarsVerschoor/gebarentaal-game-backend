@@ -21,7 +21,7 @@ const scoreController = {
             const levels = await LevelUser.findAll({
                 where: { id: req.user.id }
             });
-            res.status(200).json(JSON.stringify(levels));
+            res.status(200).json(levels);
 
         } catch(error) {
             console.error(error);
