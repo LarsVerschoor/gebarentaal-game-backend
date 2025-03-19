@@ -25,7 +25,7 @@ const scoreController = {
                     through: { attributes: ['best_time', 'created_at', 'updated_at'] }
                 }
             });
-            res.status(200).json(JSON.stringify(levels));
+            res.status(200).json(levels);
 
         } catch(error) {
             console.error(error);
