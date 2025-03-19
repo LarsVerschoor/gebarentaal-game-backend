@@ -20,13 +20,13 @@ router.delete('/characters/:id', checkLoggedIn, authenticate, characterControlle
 router.put('/characters/:id', checkLoggedIn, authenticate, characterController.put);
 
 
-router.get('/levels', levelController.getAll);
-router.post('/levels', levelController.post);
-router.options('/levels', levelController.options);
+router.get('/levels', checkLoggedIn, authenticate, levelController.getAll);
+router.post('/levels', checkLoggedIn, authenticate, levelController.post);
+router.options('/levels', checkLoggedIn, authenticate, levelController.options);
 
-router.get('/levels/:id', levelController.get);
-router.delete('/levels/:id', levelController.delete);
-router.put('/levels/:id', levelController.put);
+router.get('/levels/:id', checkLoggedIn, authenticate, levelController.get);
+router.delete('/levels/:id', checkLoggedIn, authenticate, levelController.delete);
+router.put('/levels/:id', checkLoggedIn, authenticate, levelController.put);
 
 router.post('/scores', checkLoggedIn, authenticate, scoreController.post);
 router.get('/scores', checkLoggedIn, authenticate, scoreController.get);

@@ -11,7 +11,7 @@ router.get('/characters', checkLoggedIn, authenticate, characterController.getAl
 
 router.get('/accounts', checkLoggedIn, authenticate, accountController.getAll);
 router.post('/accounts', checkLoggedIn, authenticate, accountController.post);
-router.delete('/accounts', checkLoggedIn, authenticate, accountController.delete);
-
+router.delete('/accounts/:id', checkLoggedIn, authenticate, accountController.delete);
+router.patch('/accounts/:id', checkLoggedIn, authenticate, authenticate.patch);
 
 module.exports = router
