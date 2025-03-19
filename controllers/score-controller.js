@@ -18,12 +18,8 @@ const scoreController = {
     },
     get: async (req, res) => {
         try {
-            const levels = await Level.findAll({
-                include: {
-                    model: User,
-                    where: { id: req.user.id },
-                    through: { attributes: ['best_time', 'created_at', 'updated_at'] }
-                }
+            const levels = await LevelUser.findAll({
+                where: { id: req.user.id }
             });
             res.status(200).json(JSON.stringify(levels));
 
